@@ -1,0 +1,215 @@
+{
+    "name": "PirateController",
+    "maps": [
+        {
+            "name": "ShipControl",
+            "id": "34b03dbe-6243-456b-bc07-bb0a6fd058dd",
+            "actions": [
+                {
+                    "name": "ShipAccelerate",
+                    "type": "Value",
+                    "id": "1644081a-4143-4db8-8deb-f8b577f580cb",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ShipTurn",
+                    "type": "Value",
+                    "id": "11acfb17-61d8-48a0-8269-c5192578351e",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "a17be9d0-9868-43f1-81d4-1204828cfd16",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipTurn",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a9c45b64-8023-4902-b12f-32db919c1d37",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";K+M",
+                    "action": "ShipTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "08aaea0d-574d-4141-aed0-c1e7229d27c4",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Xbox Controller",
+                    "action": "ShipTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Negative",
+                    "id": "ac721109-c9e5-4a06-b741-4997fb73ec5c",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Xbox Controller",
+                    "action": "ShipTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a5f097fb-825c-4e43-b510-900415103c54",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";K+M",
+                    "action": "ShipTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "54737711-8f13-4a55-9b27-3f92ba95fc2e",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipAccelerate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "77bb2766-0eb1-4670-ac4f-509fc49e15e1",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShipAccelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "75fc2a16-0b10-4554-94c6-034399b99a3f",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";K+M",
+                    "action": "ShipAccelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "7832f907-262c-4af8-a06f-f17a8290239e",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Xbox Controller",
+                    "action": "ShipAccelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "PirateControl",
+            "id": "ecd7d918-9811-4da8-91bf-dd5f667d3f48",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "f9af2b57-f6df-4196-985c-cdce453d666f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2a795fc2-56ca-4746-8a19-0a5d09334ca9",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UIControl",
+            "id": "5a09c489-53f2-4717-8c18-e4d2b7368b4d",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "1addd8f9-e3cd-4318-bb0a-41718839943f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "17fc1675-c3cd-4be1-a36b-1935e178d836",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "K+M",
+            "bindingGroup": "K+M",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Xbox Controller",
+            "bindingGroup": "Xbox Controller",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
