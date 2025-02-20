@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5682017883938843707}
   - component: {fileID: 4904750445148040299}
   - component: {fileID: 42012066851259229}
+  - component: {fileID: 4178246417978138824}
   m_Layer: 0
   m_Name: PirateShip
   m_TagString: Untagged
@@ -33,7 +34,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6264513634352816169}
-  - {fileID: 5684188793856665705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5682017883938843707
@@ -70,18 +70,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4480626772998373505}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a87b6ff0700f8a49b6acd99dee146a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAcceleration: {x: 5, y: 3}
-  turnAcceleration: {x: 10, y: 15}
-  maxMoveSpeed: 50
-  maxTurnSpeed: 50
+  moveAcceleration: {x: 15, y: 9}
+  turnAcceleration: {x: 8, y: 15}
+  maxMoveSpeed: 25
+  maxTurnSpeed: 25
   driftFactor: 0.9
-  moveHandle: {fileID: 7155793671527538928, guid: 6349072d1e14d8e428a9b91fa1812eca, type: 3}
-  turnHandle: {fileID: -23743122387748971, guid: 6349072d1e14d8e428a9b91fa1812eca, type: 3}
+  changeDirectionDeceleration: 1.5
+  input: {fileID: 11400000, guid: 6cb2c3f3b910c254b9000823936d28bc, type: 2}
 --- !u!114 &42012066851259229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,143 +112,27 @@ MonoBehaviour:
   m_DefaultActionMap: ShipControl
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!1 &6554866240239784200
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5684188793856665705}
-  - component: {fileID: 6954745083240387527}
-  - component: {fileID: 8183703656737764134}
-  - component: {fileID: 2274341392036873068}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5684188793856665705
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6554866240239784200}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.24039857, y: -0, z: -0, w: 0.9706743}
-  m_LocalPosition: {x: 0, y: 12.97, z: -13.52}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4110339974986707737}
-  m_LocalEulerAnglesHint: {x: 27.82, y: 0, z: 0}
---- !u!20 &6954745083240387527
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6554866240239784200}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 20.78461
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60.000004
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &8183703656737764134
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6554866240239784200}
-  m_Enabled: 1
---- !u!114 &2274341392036873068
+--- !u!114 &4178246417978138824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6554866240239784200}
+  m_GameObject: {fileID: 4480626772998373505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Script: {fileID: 11500000, guid: 09d655a599dc02a42914a06d4eda00ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+  moveAcceleration: {x: 15, y: 9}
+  turnAcceleration: {x: 8, y: 15}
+  maxMoveSpeed: 25
+  maxTurnSpeed: 25
+  driftFactor: 0.9
+  changeDirectionDeceleration: 1.5
+  sailLoweringSpeed: 0.25
+  sailText: {fileID: 0}
+  input: {fileID: 11400000, guid: 6cb2c3f3b910c254b9000823936d28bc, type: 2}
 --- !u!1001 &5871212360098482114
 PrefabInstance:
   m_ObjectHideFlags: 0

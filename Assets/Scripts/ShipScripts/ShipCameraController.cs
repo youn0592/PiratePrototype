@@ -12,10 +12,12 @@ public class ShipCameraController : MonoBehaviour
     [SerializeField]
     Camera currentShipCamera;
 
-    [SerializeField, Tooltip("The speed which the camera rotates around the ship")]
-    float rotationAmount;
+    [SerializeField, Tooltip("The speed which the camera rotates around the ship using keyboard")]
+    float rotationAmount = 100;
+    [SerializeField, Tooltip("The speed which the camera rotates around the ship using mouse")]
+    float sensitivity = 100;
     [SerializeField, Tooltip("The speed the camera follows ship")]
-    float movementSpeed;
+    float movementSpeed = 5;
     [SerializeField, Tooltip("How far back the camera should be from the ship")]
     float cameraOffset;
     [SerializeField, Tooltip("How long after a player let go of key before reseting camera")]
@@ -45,6 +47,7 @@ public class ShipCameraController : MonoBehaviour
         currentY = transform.position.y;
 
         input.CameraTurnEvent += HandleCameraTurnInput;
+        input.MousePosEvent += HandleMousePosInput;
     }
 
     private void OnDestroy()
@@ -59,6 +62,11 @@ public class ShipCameraController : MonoBehaviour
         {
             cameraTimer = 0f;
             RotateCamera();
+        }
+        else if(Mouse.current.delta.ReadValue() != Vector2.zero)
+        {
+            cameraTimer = 0f;
+            RotateCameraWithMouse();
         }
         else
         {
@@ -83,6 +91,17 @@ public class ShipCameraController : MonoBehaviour
             float rotationStep = cameraRate * rotationAmount * Time.deltaTime;
             transform.RotateAround(shipTransform.position, Vector3.up, rotationStep);
         }
+    }
+
+    void RotateCameraWithMouse()
+    {
+        float rotationStep = mouseDelta.x * sensitivity * Time.deltaTime;
+        transform.RotateAround(shipTransform.position, Vector3.up, rotationStep);
+
+        //Vector3 direction = transform.position - shipTransform.position;
+        //float currentPitch = Vector3.SignedAngle(direction, Vector3.ProjectOnPlane(direction, Vector3.up), transform.right);
+        //if ((mouseDelta.y < 0 && currentPitch < maxPitch) || (mouseDelta.y > 0 && currentPitch > -maxPitch))
+        //    transform.RotateAround(shipTransform.position, transform.right, -mouseDelta.y);
     }
 
     void ResetCamera()

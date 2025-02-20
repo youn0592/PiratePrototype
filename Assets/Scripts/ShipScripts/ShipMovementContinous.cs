@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEditor.ShaderGraph.Internal;
 
 public class ShipMovementContinous : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ShipMovementContinous : MonoBehaviour
     float driftFactor = 0.9f;
     [SerializeField]
     float changeDirectionDeceleration = 2f;
+    [SerializeField]
+    float sailLoweringSpeed = 0.25f;
     [SerializeField]
     TextMeshProUGUI sailText;
     [SerializeField]
@@ -84,7 +87,7 @@ public class ShipMovementContinous : MonoBehaviour
     {
         if(moveDir != 0.0f)
         {
-            sailAmount += moveDir * 0.25f * Time.deltaTime;
+            sailAmount += moveDir * sailLoweringSpeed * Time.deltaTime;
             sailAmount = Mathf.Clamp(sailAmount, 0, 1);
         }
 
