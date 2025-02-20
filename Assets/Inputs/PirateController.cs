@@ -108,6 +108,24 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraTurn"",
+                    ""type"": ""Value"",
+                    ""id"": ""39aef420-c320-4a7d-ae10-4c5b4c24a1bc"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MousePos"",
+                    ""type"": ""Value"",
+                    ""id"": ""328aba3a-62f3-416f-8777-a9de54601b25"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -200,6 +218,17 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Negative"",
+                    ""id"": ""35842f1c-f893-4894-a33f-03dc2d317339"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""ShipAccelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""positive"",
                     ""id"": ""7832f907-262c-4af8-a06f-f17a8290239e"",
                     ""path"": ""<Gamepad>/leftStick/y"",
@@ -209,6 +238,72 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""action"": ""ShipAccelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""8ddacef4-fda1-4220-bcbf-a0363735e38a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraTurn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""dcf57fa5-035b-4141-bb88-fe5bc6a32881"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraTurn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""072a65f7-ccec-472e-82ba-af83dac920ad"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraTurn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""f2c878ee-0967-40ee-8037-7c779e16b8a2"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraTurn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""291f9152-888f-4004-865d-e7922bd81117"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraTurn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67acbc20-f822-431c-8483-e3ece1c72eea"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -303,6 +398,8 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         m_ShipControl = asset.FindActionMap("ShipControl", throwIfNotFound: true);
         m_ShipControl_ShipAccelerate = m_ShipControl.FindAction("ShipAccelerate", throwIfNotFound: true);
         m_ShipControl_ShipTurn = m_ShipControl.FindAction("ShipTurn", throwIfNotFound: true);
+        m_ShipControl_CameraTurn = m_ShipControl.FindAction("CameraTurn", throwIfNotFound: true);
+        m_ShipControl_MousePos = m_ShipControl.FindAction("MousePos", throwIfNotFound: true);
         // PirateControl
         m_PirateControl = asset.FindActionMap("PirateControl", throwIfNotFound: true);
         m_PirateControl_Newaction = m_PirateControl.FindAction("New action", throwIfNotFound: true);
@@ -393,6 +490,8 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     private List<IShipControlActions> m_ShipControlActionsCallbackInterfaces = new List<IShipControlActions>();
     private readonly InputAction m_ShipControl_ShipAccelerate;
     private readonly InputAction m_ShipControl_ShipTurn;
+    private readonly InputAction m_ShipControl_CameraTurn;
+    private readonly InputAction m_ShipControl_MousePos;
     /// <summary>
     /// Provides access to input actions defined in input action map "ShipControl".
     /// </summary>
@@ -412,6 +511,14 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "ShipControl/ShipTurn".
         /// </summary>
         public InputAction @ShipTurn => m_Wrapper.m_ShipControl_ShipTurn;
+        /// <summary>
+        /// Provides access to the underlying input action "ShipControl/CameraTurn".
+        /// </summary>
+        public InputAction @CameraTurn => m_Wrapper.m_ShipControl_CameraTurn;
+        /// <summary>
+        /// Provides access to the underlying input action "ShipControl/MousePos".
+        /// </summary>
+        public InputAction @MousePos => m_Wrapper.m_ShipControl_MousePos;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -444,6 +551,12 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             @ShipTurn.started += instance.OnShipTurn;
             @ShipTurn.performed += instance.OnShipTurn;
             @ShipTurn.canceled += instance.OnShipTurn;
+            @CameraTurn.started += instance.OnCameraTurn;
+            @CameraTurn.performed += instance.OnCameraTurn;
+            @CameraTurn.canceled += instance.OnCameraTurn;
+            @MousePos.started += instance.OnMousePos;
+            @MousePos.performed += instance.OnMousePos;
+            @MousePos.canceled += instance.OnMousePos;
         }
 
         /// <summary>
@@ -461,6 +574,12 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             @ShipTurn.started -= instance.OnShipTurn;
             @ShipTurn.performed -= instance.OnShipTurn;
             @ShipTurn.canceled -= instance.OnShipTurn;
+            @CameraTurn.started -= instance.OnCameraTurn;
+            @CameraTurn.performed -= instance.OnCameraTurn;
+            @CameraTurn.canceled -= instance.OnCameraTurn;
+            @MousePos.started -= instance.OnMousePos;
+            @MousePos.performed -= instance.OnMousePos;
+            @MousePos.canceled -= instance.OnMousePos;
         }
 
         /// <summary>
@@ -733,6 +852,20 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShipTurn(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CameraTurn" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCameraTurn(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MousePos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMousePos(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PirateControl" which allows adding and removing callbacks.

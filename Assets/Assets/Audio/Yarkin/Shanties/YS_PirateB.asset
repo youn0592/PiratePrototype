@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20e0851b7fa72244803495deb5de822, type: 3}
+  m_Name: YS_PirateB
+  m_EditorClassIdentifier: 
+  _midiSong:
+    _name: Pirate B
+    _events:
+    - _delayBeforeEvent: 0
+      _type: 240
+      _data: 03547261636b2032
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3066
+    - _delayBeforeEvent: 66
+      _type: 128
+      _data: 3066
+    - _delayBeforeEvent: 69
+      _type: 144
+      _data: 3366
+    - _delayBeforeEvent: 54
+      _type: 128
+      _data: 3366
+    - _delayBeforeEvent: 81
+      _type: 144
+      _data: 3566
+    - _delayBeforeEvent: 930
+      _type: 128
+      _data: 3566
+    - _delayBeforeEvent: 15
+      _type: 144
+      _data: 3766
+    - _delayBeforeEvent: 53
+      _type: 128
+      _data: 3766
+    - _delayBeforeEvent: 52
+      _type: 144
+      _data: 3866
+    - _delayBeforeEvent: 960
+      _type: 128
+      _data: 3866
+    - _delayBeforeEvent: 15
+      _type: 144
+      _data: 3a66
+    - _delayBeforeEvent: 59
+      _type: 128
+      _data: 3a66
+    - _delayBeforeEvent: 76
+      _type: 144
+      _data: 3766
+    - _delayBeforeEvent: 450
+      _type: 128
+      _data: 3766
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3866
+    - _delayBeforeEvent: 43
+      _type: 144
+      _data: 3766
+    - _delayBeforeEvent: 5
+      _type: 128
+      _data: 3866
+    - _delayBeforeEvent: 51
+      _type: 128
+      _data: 3766
+    - _delayBeforeEvent: 21
+      _type: 144
+      _data: 3566
+    - _delayBeforeEvent: 360
+      _type: 128
+      _data: 3566
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3366
+    - _delayBeforeEvent: 240
+      _type: 128
+      _data: 3366
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3566
+    - _delayBeforeEvent: 600
+      _type: 128
+      _data: 3566
+    - _delayBeforeEvent: 150
+      _type: 144
+      _data: 3066
+    - _delayBeforeEvent: 66
+      _type: 128
+      _data: 3066
+    - _delayBeforeEvent: 69
+      _type: 144
+      _data: 3366
+    - _delayBeforeEvent: 54
+      _type: 128
+      _data: 3366
+    - _delayBeforeEvent: 81
+      _type: 144
+      _data: 3566
+    - _delayBeforeEvent: 930
+      _type: 128
+      _data: 3566
+    - _delayBeforeEvent: 15
+      _type: 144
+      _data: 3766
+    - _delayBeforeEvent: 53
+      _type: 128
+      _data: 3766
+    - _delayBeforeEvent: 52
+      _type: 144
+      _data: 3866
+    - _delayBeforeEvent: 960
+      _type: 128
+      _data: 3866
+    - _delayBeforeEvent: 15
+      _type: 144
+      _data: 3a66
+    - _delayBeforeEvent: 59
+      _type: 128
+      _data: 3a66
+    - _delayBeforeEvent: 76
+      _type: 144
+      _data: 3766
+    - _delayBeforeEvent: 420
+      _type: 128
+      _data: 3766
+    - _delayBeforeEvent: 120
+      _type: 144
+      _data: 3c66
+    - _delayBeforeEvent: 360
+      _type: 128
+      _data: 3c66
+    - _delayBeforeEvent: 120
+      _type: 144
+      _data: 3566
+    - _delayBeforeEvent: 750
+      _type: 128
+      _data: 3566
+    - _delayBeforeEvent: 360
+      _type: 144
+      _data: 4866
+    - _delayBeforeEvent: 990
+      _type: 128
+      _data: 4866
+    - _delayBeforeEvent: 107
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 960
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 89
+      _type: 144
+      _data: 3a66
+    - _delayBeforeEvent: 584
+      _type: 128
+      _data: 3a66
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3c66
+    - _delayBeforeEvent: 540
+      _type: 128
+      _data: 3c66
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3d66
+    - _delayBeforeEvent: 720
+      _type: 128
+      _data: 3d66
+    - _delayBeforeEvent: 300
+      _type: 144
+      _data: 3566
+    - _delayBeforeEvent: 600
+      _type: 128
+      _data: 3566
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3766
+    - _delayBeforeEvent: 540
+      _type: 128
+      _data: 3766
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3866
+    - _delayBeforeEvent: 1020
+      _type: 128
+      _data: 3866
+    - _delayBeforeEvent: 60
+      _type: 144
+      _data: 3766
+    - _delayBeforeEvent: 420
+      _type: 128
+      _data: 3766
+    - _delayBeforeEvent: 120
+      _type: 144
+      _data: 3c66
+    - _delayBeforeEvent: 360
+      _type: 128
+      _data: 3c66
+    - _delayBeforeEvent: 180
+      _type: 144
+      _data: 3566
+    - _delayBeforeEvent: 750
+      _type: 128
+      _data: 3566
+    - _delayBeforeEvent: 0
+      _type: 240
+      _data: 2f

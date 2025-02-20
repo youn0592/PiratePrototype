@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 3fb3bd46562ef2c46be3030994204a25
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ScurvyVoice: {fileID: 11400000, guid: 126a03753c3bb064189759bf00feab3f, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

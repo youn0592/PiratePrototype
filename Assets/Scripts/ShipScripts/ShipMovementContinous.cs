@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using TMPro;
 
-public class ShipMovement : MonoBehaviour
+public class ShipMovementContinous : MonoBehaviour
 {
-
     //Things the move class need, Acceleration and Decleration. Turning happens exponently.
 
     Rigidbody rigBod;
@@ -18,10 +15,18 @@ public class ShipMovement : MonoBehaviour
     float maxTurnSpeed = 50f;
     [SerializeField]
     float driftFactor = 0.9f;
+    [SerializeField]
+    float changeDirectionDeceleration = 2f;
+    [SerializeField]
+    TextMeshProUGUI sailText;
+    [SerializeField]
+    InputReader input;
 
     //Floats to set Input values
     float moveDir;
     float turnDir;
+
+    float sailAmount = 0.0f;
 
     Vector3 velocity;
 
@@ -29,25 +34,28 @@ public class ShipMovement : MonoBehaviour
     float turnVelocity;
 
 
-    //Input Handles
-    public InputActionReference moveHandle;
-    public InputActionReference turnHandle;
-
     private void Start()
     {
         rigBod = GetComponent<Rigidbody>();
 
-        if(rigBod == null)
+        if (rigBod == null)
         {
             Debug.LogError(this + " does not has a Rigidbody component");
         }
+
+        input.ShipAccelerateEvent += HandleAccelerateInput;
+        input.ShipTurnEvent += HandleTurnInput;
+    }
+
+    private void OnDestroy()
+    {
+        input.ShipAccelerateEvent -= HandleAccelerateInput;
+        input.ShipTurnEvent -= HandleTurnInput;
     }
 
     private void FixedUpdate()
     {
-        moveDir = moveHandle.action.ReadValue<float>();
-        turnDir = turnHandle.action.ReadValue<float>();
-
+        SetSail();
         MoveShip();
         TurnShip();
         TurnDrift();
@@ -59,24 +67,42 @@ public class ShipMovement : MonoBehaviour
     private void MoveShip()
     {
 
-        if (Mathf.Abs(moveDir) < 0.1f)
+        if (Mathf.Abs(sailAmount) < 0.1f)
         {
             velocity += -velocity.normalized * moveAcceleration.y * Time.fixedDeltaTime;
         }
         else
         {
-            velocity += transform.forward * moveAcceleration.x * moveDir * Time.fixedDeltaTime;
+            velocity += transform.forward * moveAcceleration.x * sailAmount * Time.fixedDeltaTime;
         }
 
 
         velocity = Vector3.ClampMagnitude(velocity, maxMoveSpeed);
     }
 
+    private void SetSail()
+    {
+        if(moveDir != 0.0f)
+        {
+            sailAmount += moveDir * 0.25f * Time.deltaTime;
+            sailAmount = Mathf.Clamp(sailAmount, 0, 1);
+        }
+
+        sailText.SetText(sailAmount.ToString());
+    }
+
     private void TurnShip()
     {
-        if(Mathf.Abs(turnDir) < 0.1f)
+
+        bool bTurningChange = Mathf.Sign(turnDir) != Mathf.Sign(turnVelocity) && Mathf.Abs(turnVelocity) > 0.1f;
+
+        if (Mathf.Abs(turnDir) < 0.1f)
         {
             turnVelocity = Mathf.MoveTowards(turnVelocity, 0, turnAcceleration.y * Time.fixedDeltaTime);
+        }
+        else if (bTurningChange)
+        {
+            turnVelocity = Mathf.MoveTowards(turnVelocity, 0, turnAcceleration.y * changeDirectionDeceleration * Time.fixedDeltaTime);
         }
         else
         {
@@ -84,7 +110,6 @@ public class ShipMovement : MonoBehaviour
             turnVelocity = Mathf.Clamp(turnVelocity, -maxTurnSpeed, maxTurnSpeed);
         }
     }
-
     void TurnDrift()
     {
         forwardVector = Vector3.Project(rigBod.linearVelocity, transform.forward);
@@ -93,5 +118,16 @@ public class ShipMovement : MonoBehaviour
 
 
         velocity = forwardVector + lateralVelocity;
+    }
+
+
+    //Possible to move to a Contorller Class?
+    void HandleAccelerateInput(float val)
+    {
+        moveDir = val;
+    }
+    void HandleTurnInput(float val)
+    {
+        turnDir = val;
     }
 }

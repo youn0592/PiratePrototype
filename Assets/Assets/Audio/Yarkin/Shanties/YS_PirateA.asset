@@ -1,0 +1,485 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20e0851b7fa72244803495deb5de822, type: 3}
+  m_Name: YS_PirateA
+  m_EditorClassIdentifier: 
+  _midiSong:
+    _name: Pirate A
+    _events:
+    - _delayBeforeEvent: 0
+      _type: 240
+      _data: 03547261636b2031
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 3c66
+    - _delayBeforeEvent: 66
+      _type: 128
+      _data: 3c66
+    - _delayBeforeEvent: 69
+      _type: 144
+      _data: 3f66
+    - _delayBeforeEvent: 54
+      _type: 128
+      _data: 3f66
+    - _delayBeforeEvent: 81
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 57
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 213
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 45
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 225
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 47
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 155
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 43
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 160
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 53
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 82
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 42
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 228
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 32
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 238
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 48
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 222
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 46
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 89
+      _type: 144
+      _data: 4666
+    - _delayBeforeEvent: 59
+      _type: 128
+      _data: 4666
+    - _delayBeforeEvent: 76
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 44
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 226
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 48
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 132
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 43
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 5
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 51
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 21
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 48
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 192
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 48
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 87
+      _type: 144
+      _data: 3f66
+    - _delayBeforeEvent: 49
+      _type: 128
+      _data: 3f66
+    - _delayBeforeEvent: 86
+      _type: 144
+      _data: 3f66
+    - _delayBeforeEvent: 63
+      _type: 128
+      _data: 3f66
+    - _delayBeforeEvent: 4
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 55
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 688
+      _type: 144
+      _data: 3c66
+    - _delayBeforeEvent: 66
+      _type: 128
+      _data: 3c66
+    - _delayBeforeEvent: 69
+      _type: 144
+      _data: 3f66
+    - _delayBeforeEvent: 49
+      _type: 128
+      _data: 3f66
+    - _delayBeforeEvent: 86
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 36
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 234
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 44
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 226
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 42
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 160
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 44
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 159
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 50
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 85
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 43
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 227
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 44
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 226
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 47
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 155
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 48
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 155
+      _type: 144
+      _data: 4666
+    - _delayBeforeEvent: 47
+      _type: 128
+      _data: 4666
+    - _delayBeforeEvent: 88
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 38
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 232
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 36
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 234
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 46
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 89
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 53
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 217
+      _type: 144
+      _data: 3f66
+    - _delayBeforeEvent: 106
+      _type: 128
+      _data: 3f66
+    - _delayBeforeEvent: 29
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 46
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 764
+      _type: 144
+      _data: 3c66
+    - _delayBeforeEvent: 74
+      _type: 128
+      _data: 3c66
+    - _delayBeforeEvent: 61
+      _type: 144
+      _data: 3f66
+    - _delayBeforeEvent: 39
+      _type: 128
+      _data: 3f66
+    - _delayBeforeEvent: 96
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 46
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 224
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 50
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 220
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 42
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 160
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 50
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 153
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 52
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 83
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 52
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 218
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 40
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 230
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 50
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 152
+      _type: 144
+      _data: 4666
+    - _delayBeforeEvent: 56
+      _type: 128
+      _data: 4666
+    - _delayBeforeEvent: 147
+      _type: 144
+      _data: 4866
+    - _delayBeforeEvent: 51
+      _type: 128
+      _data: 4866
+    - _delayBeforeEvent: 84
+      _type: 144
+      _data: 4966
+    - _delayBeforeEvent: 36
+      _type: 128
+      _data: 4966
+    - _delayBeforeEvent: 234
+      _type: 144
+      _data: 4966
+    - _delayBeforeEvent: 40
+      _type: 128
+      _data: 4966
+    - _delayBeforeEvent: 230
+      _type: 144
+      _data: 4966
+    - _delayBeforeEvent: 34
+      _type: 128
+      _data: 4966
+    - _delayBeforeEvent: 168
+      _type: 144
+      _data: 4866
+    - _delayBeforeEvent: 53
+      _type: 128
+      _data: 4866
+    - _delayBeforeEvent: 150
+      _type: 144
+      _data: 4666
+    - _delayBeforeEvent: 45
+      _type: 128
+      _data: 4666
+    - _delayBeforeEvent: 90
+      _type: 144
+      _data: 4666
+    - _delayBeforeEvent: 31
+      _type: 128
+      _data: 4666
+    - _delayBeforeEvent: 36
+      _type: 144
+      _data: 4866
+    - _delayBeforeEvent: 50
+      _type: 128
+      _data: 4866
+    - _delayBeforeEvent: 85
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 35
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 438
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 46
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 224
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 57
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 78
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 51
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 219
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 42
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 228
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 45
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 157
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 45
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 158
+      _type: 144
+      _data: 4666
+    - _delayBeforeEvent: 42
+      _type: 128
+      _data: 4666
+    - _delayBeforeEvent: 124
+      _type: 144
+      _data: 4666
+    - _delayBeforeEvent: 36
+      _type: 128
+      _data: 4666
+    - _delayBeforeEvent: 0
+      _type: 144
+      _data: 4866
+    - _delayBeforeEvent: 67
+      _type: 128
+      _data: 4866
+    - _delayBeforeEvent: 1
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 50
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 490
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 47
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 223
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 62
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 73
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 49
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 221
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 41
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 229
+      _type: 144
+      _data: 4466
+    - _delayBeforeEvent: 65
+      _type: 128
+      _data: 4466
+    - _delayBeforeEvent: 2
+      _type: 144
+      _data: 4366
+    - _delayBeforeEvent: 65
+      _type: 128
+      _data: 4366
+    - _delayBeforeEvent: 273
+      _type: 144
+      _data: 3f66
+    - _delayBeforeEvent: 65
+      _type: 128
+      _data: 3f66
+    - _delayBeforeEvent: 70
+      _type: 144
+      _data: 4166
+    - _delayBeforeEvent: 65
+      _type: 128
+      _data: 4166
+    - _delayBeforeEvent: 0
+      _type: 240
+      _data: 2f
