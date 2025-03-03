@@ -23,7 +23,6 @@ public class ShipCameraController : MonoBehaviour
     [SerializeField, Tooltip("How long after a player let go of key before reseting camera")]
     float cameraReset = 5f;
 
-    Quaternion newRot;
     Vector2 mouseDelta;
 
     float currentY;
@@ -43,21 +42,23 @@ public class ShipCameraController : MonoBehaviour
         if (shipTransform == null)
             Debug.LogError("Ship is Null");
 
-        newRot = transform.rotation;
         currentY = transform.position.y;
 
-        input.CameraTurnEvent += HandleCameraTurnInput;
-        input.MousePosEvent += HandleMousePosInput;
+        input.ShipCameraTurnEvent += HandleShipCameraTurnInput;
+        input.ShipMousePosEvent += HandleShipMousePosInput;
     }
 
     private void OnDestroy()
     {
-        input.CameraTurnEvent -= HandleCameraTurnInput;
+        input.ShipCameraTurnEvent -= HandleShipCameraTurnInput;
+        input.PirateMousePosEvent -= HandleShipMousePosInput;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
+        FollowShip();
+
         if(Mathf.Abs(cameraRate) > 0.1f)
         {
             cameraTimer = 0f;
@@ -73,15 +74,18 @@ public class ShipCameraController : MonoBehaviour
             cameraTimer += Time.deltaTime;
         }
 
-        Vector3 newLoc = Vector3.Lerp(transform.position, shipTransform.position, movementSpeed * Time.deltaTime);
-        newLoc.y = currentY;
-        transform.position = newLoc;
-
         if(cameraTimer > cameraReset)
         {
             ResetCamera();
         }
+        
+    }
 
+    void FollowShip()
+    {
+        Vector3 newLoc = Vector3.Lerp(transform.position, shipTransform.position, movementSpeed * Time.deltaTime);
+        newLoc.y = currentY;
+        transform.position = newLoc;
     }
 
     void RotateCamera()
@@ -97,11 +101,6 @@ public class ShipCameraController : MonoBehaviour
     {
         float rotationStep = mouseDelta.x * sensitivity * Time.deltaTime;
         transform.RotateAround(shipTransform.position, Vector3.up, rotationStep);
-
-        //Vector3 direction = transform.position - shipTransform.position;
-        //float currentPitch = Vector3.SignedAngle(direction, Vector3.ProjectOnPlane(direction, Vector3.up), transform.right);
-        //if ((mouseDelta.y < 0 && currentPitch < maxPitch) || (mouseDelta.y > 0 && currentPitch > -maxPitch))
-        //    transform.RotateAround(shipTransform.position, transform.right, -mouseDelta.y);
     }
 
     void ResetCamera()
@@ -114,13 +113,14 @@ public class ShipCameraController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, movementSpeed * Time.deltaTime);
     }    
 
-    void HandleMousePosInput(Vector2 val)
+    void HandleShipMousePosInput(Vector2 val)
     {
         mouseDelta = val;
     }
-    void HandleCameraTurnInput(float val)
+    void HandleShipCameraTurnInput(float val)
     {
         cameraRate = val;
     }
+
 
 }

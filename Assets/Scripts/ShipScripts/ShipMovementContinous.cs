@@ -46,6 +46,7 @@ public class ShipMovementContinous : MonoBehaviour
             Debug.LogError(this + " does not has a Rigidbody component");
         }
 
+
         input.ShipAccelerateEvent += HandleAccelerateInput;
         input.ShipTurnEvent += HandleTurnInput;
     }

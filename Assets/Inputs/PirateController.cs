@@ -110,7 +110,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""CameraTurn"",
+                    ""name"": ""ShipCameraTurn"",
                     ""type"": ""Value"",
                     ""id"": ""39aef420-c320-4a7d-ae10-4c5b4c24a1bc"",
                     ""expectedControlType"": ""Axis"",
@@ -119,13 +119,22 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""MousePos"",
+                    ""name"": ""ShipMousePos"",
                     ""type"": ""Value"",
                     ""id"": ""328aba3a-62f3-416f-8777-a9de54601b25"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ShipSwap"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c21efbc-aa52-4757-9a1a-fc2c4c795a38"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -246,7 +255,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraTurn"",
+                    ""action"": ""ShipCameraTurn"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -257,7 +266,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraTurn"",
+                    ""action"": ""ShipCameraTurn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -268,7 +277,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraTurn"",
+                    ""action"": ""ShipCameraTurn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -279,7 +288,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraTurn"",
+                    ""action"": ""ShipCameraTurn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -290,7 +299,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraTurn"",
+                    ""action"": ""ShipCameraTurn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -301,7 +310,18 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";K+M"",
-                    ""action"": ""MousePos"",
+                    ""action"": ""ShipMousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2a20a94-6d12-4082-a900-8d02725e57bd"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""ShipSwap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -312,9 +332,72 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             ""id"": ""ecd7d918-9811-4da8-91bf-dd5f667d3f48"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""PirateForward"",
                     ""type"": ""Button"",
-                    ""id"": ""f9af2b57-f6df-4196-985c-cdce453d666f"",
+                    ""id"": ""1220e9d2-ff36-48b7-8677-b44a812d5f5b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PirateStrafe"",
+                    ""type"": ""Button"",
+                    ""id"": ""692ed4ee-e760-4fcc-91ab-c8686c3f4e22"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PirateCameraRotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc30fd70-b5ea-45b4-9894-7a80fa73427a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PirateMousePos"",
+                    ""type"": ""Value"",
+                    ""id"": ""1d97db33-5f6e-42b4-9010-a2871e33e522"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PirateSwap"",
+                    ""type"": ""Button"",
+                    ""id"": ""cbf6df0e-9807-4c1f-b7c5-88a045b33344"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PirateInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""bf926d72-6323-4d39-afd8-7647b3366c23"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PirateSubmit"",
+                    ""type"": ""Button"",
+                    ""id"": ""05afd1ba-59c5-4e7c-aa97-4892b9a971fa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PirateMouseClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""feffbaee-6d90-4649-bd5f-67b2ef2eb700"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -323,13 +406,156 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""2a795fc2-56ca-4746-8a19-0a5d09334ca9"",
-                    ""path"": """",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""d19d7e0f-73eb-4ff9-8e0c-6fe51ea4ef91"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""PirateForward"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8617de24-bd51-43ac-9c39-85cf10921688"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""2790d069-fdc1-42fa-8ca4-6e863cda05fc"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""ee0529b6-473a-4a76-babe-6c716db97174"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PirateStrafe"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""66d8e7d0-ad71-41f3-a95e-5495dc2cfdc4"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateStrafe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b815f02e-c483-4d23-ac9b-62b354dd003d"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateStrafe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0f5aa1e-97eb-4066-a455-4bc5166a4759"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateSwap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""db706e48-a9c2-40c8-8654-8eb2b2ba19bf"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PirateCameraRotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c0703f06-7187-46b8-a458-dbaf7e66ef2c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateCameraRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""7b0a6a1c-ecb2-4f73-89c6-7e8b7a85fb7f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateCameraRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92d53da6-a4f7-4867-8bcf-40bf4d421f98"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PirateMousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbbfd095-c6cb-4c4f-93cb-a797c1b66734"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0864c32a-bb65-400e-9f52-c3b4cb2ede04"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateSubmit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f2bb248-e81c-438f-8280-7b90d234403e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateMouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -340,7 +566,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             ""id"": ""5a09c489-53f2-4717-8c18-e4d2b7368b4d"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""UITest"",
                     ""type"": ""Button"",
                     ""id"": ""1addd8f9-e3cd-4318-bb0a-41718839943f"",
                     ""expectedControlType"": """",
@@ -357,7 +583,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""UITest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -398,14 +624,22 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         m_ShipControl = asset.FindActionMap("ShipControl", throwIfNotFound: true);
         m_ShipControl_ShipAccelerate = m_ShipControl.FindAction("ShipAccelerate", throwIfNotFound: true);
         m_ShipControl_ShipTurn = m_ShipControl.FindAction("ShipTurn", throwIfNotFound: true);
-        m_ShipControl_CameraTurn = m_ShipControl.FindAction("CameraTurn", throwIfNotFound: true);
-        m_ShipControl_MousePos = m_ShipControl.FindAction("MousePos", throwIfNotFound: true);
+        m_ShipControl_ShipCameraTurn = m_ShipControl.FindAction("ShipCameraTurn", throwIfNotFound: true);
+        m_ShipControl_ShipMousePos = m_ShipControl.FindAction("ShipMousePos", throwIfNotFound: true);
+        m_ShipControl_ShipSwap = m_ShipControl.FindAction("ShipSwap", throwIfNotFound: true);
         // PirateControl
         m_PirateControl = asset.FindActionMap("PirateControl", throwIfNotFound: true);
-        m_PirateControl_Newaction = m_PirateControl.FindAction("New action", throwIfNotFound: true);
+        m_PirateControl_PirateForward = m_PirateControl.FindAction("PirateForward", throwIfNotFound: true);
+        m_PirateControl_PirateStrafe = m_PirateControl.FindAction("PirateStrafe", throwIfNotFound: true);
+        m_PirateControl_PirateCameraRotate = m_PirateControl.FindAction("PirateCameraRotate", throwIfNotFound: true);
+        m_PirateControl_PirateMousePos = m_PirateControl.FindAction("PirateMousePos", throwIfNotFound: true);
+        m_PirateControl_PirateSwap = m_PirateControl.FindAction("PirateSwap", throwIfNotFound: true);
+        m_PirateControl_PirateInteract = m_PirateControl.FindAction("PirateInteract", throwIfNotFound: true);
+        m_PirateControl_PirateSubmit = m_PirateControl.FindAction("PirateSubmit", throwIfNotFound: true);
+        m_PirateControl_PirateMouseClick = m_PirateControl.FindAction("PirateMouseClick", throwIfNotFound: true);
         // UIControl
         m_UIControl = asset.FindActionMap("UIControl", throwIfNotFound: true);
-        m_UIControl_Newaction = m_UIControl.FindAction("New action", throwIfNotFound: true);
+        m_UIControl_UITest = m_UIControl.FindAction("UITest", throwIfNotFound: true);
     }
 
     ~@PirateController()
@@ -490,8 +724,9 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     private List<IShipControlActions> m_ShipControlActionsCallbackInterfaces = new List<IShipControlActions>();
     private readonly InputAction m_ShipControl_ShipAccelerate;
     private readonly InputAction m_ShipControl_ShipTurn;
-    private readonly InputAction m_ShipControl_CameraTurn;
-    private readonly InputAction m_ShipControl_MousePos;
+    private readonly InputAction m_ShipControl_ShipCameraTurn;
+    private readonly InputAction m_ShipControl_ShipMousePos;
+    private readonly InputAction m_ShipControl_ShipSwap;
     /// <summary>
     /// Provides access to input actions defined in input action map "ShipControl".
     /// </summary>
@@ -512,13 +747,17 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ShipTurn => m_Wrapper.m_ShipControl_ShipTurn;
         /// <summary>
-        /// Provides access to the underlying input action "ShipControl/CameraTurn".
+        /// Provides access to the underlying input action "ShipControl/ShipCameraTurn".
         /// </summary>
-        public InputAction @CameraTurn => m_Wrapper.m_ShipControl_CameraTurn;
+        public InputAction @ShipCameraTurn => m_Wrapper.m_ShipControl_ShipCameraTurn;
         /// <summary>
-        /// Provides access to the underlying input action "ShipControl/MousePos".
+        /// Provides access to the underlying input action "ShipControl/ShipMousePos".
         /// </summary>
-        public InputAction @MousePos => m_Wrapper.m_ShipControl_MousePos;
+        public InputAction @ShipMousePos => m_Wrapper.m_ShipControl_ShipMousePos;
+        /// <summary>
+        /// Provides access to the underlying input action "ShipControl/ShipSwap".
+        /// </summary>
+        public InputAction @ShipSwap => m_Wrapper.m_ShipControl_ShipSwap;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -551,12 +790,15 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             @ShipTurn.started += instance.OnShipTurn;
             @ShipTurn.performed += instance.OnShipTurn;
             @ShipTurn.canceled += instance.OnShipTurn;
-            @CameraTurn.started += instance.OnCameraTurn;
-            @CameraTurn.performed += instance.OnCameraTurn;
-            @CameraTurn.canceled += instance.OnCameraTurn;
-            @MousePos.started += instance.OnMousePos;
-            @MousePos.performed += instance.OnMousePos;
-            @MousePos.canceled += instance.OnMousePos;
+            @ShipCameraTurn.started += instance.OnShipCameraTurn;
+            @ShipCameraTurn.performed += instance.OnShipCameraTurn;
+            @ShipCameraTurn.canceled += instance.OnShipCameraTurn;
+            @ShipMousePos.started += instance.OnShipMousePos;
+            @ShipMousePos.performed += instance.OnShipMousePos;
+            @ShipMousePos.canceled += instance.OnShipMousePos;
+            @ShipSwap.started += instance.OnShipSwap;
+            @ShipSwap.performed += instance.OnShipSwap;
+            @ShipSwap.canceled += instance.OnShipSwap;
         }
 
         /// <summary>
@@ -574,12 +816,15 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             @ShipTurn.started -= instance.OnShipTurn;
             @ShipTurn.performed -= instance.OnShipTurn;
             @ShipTurn.canceled -= instance.OnShipTurn;
-            @CameraTurn.started -= instance.OnCameraTurn;
-            @CameraTurn.performed -= instance.OnCameraTurn;
-            @CameraTurn.canceled -= instance.OnCameraTurn;
-            @MousePos.started -= instance.OnMousePos;
-            @MousePos.performed -= instance.OnMousePos;
-            @MousePos.canceled -= instance.OnMousePos;
+            @ShipCameraTurn.started -= instance.OnShipCameraTurn;
+            @ShipCameraTurn.performed -= instance.OnShipCameraTurn;
+            @ShipCameraTurn.canceled -= instance.OnShipCameraTurn;
+            @ShipMousePos.started -= instance.OnShipMousePos;
+            @ShipMousePos.performed -= instance.OnShipMousePos;
+            @ShipMousePos.canceled -= instance.OnShipMousePos;
+            @ShipSwap.started -= instance.OnShipSwap;
+            @ShipSwap.performed -= instance.OnShipSwap;
+            @ShipSwap.canceled -= instance.OnShipSwap;
         }
 
         /// <summary>
@@ -617,7 +862,14 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     // PirateControl
     private readonly InputActionMap m_PirateControl;
     private List<IPirateControlActions> m_PirateControlActionsCallbackInterfaces = new List<IPirateControlActions>();
-    private readonly InputAction m_PirateControl_Newaction;
+    private readonly InputAction m_PirateControl_PirateForward;
+    private readonly InputAction m_PirateControl_PirateStrafe;
+    private readonly InputAction m_PirateControl_PirateCameraRotate;
+    private readonly InputAction m_PirateControl_PirateMousePos;
+    private readonly InputAction m_PirateControl_PirateSwap;
+    private readonly InputAction m_PirateControl_PirateInteract;
+    private readonly InputAction m_PirateControl_PirateSubmit;
+    private readonly InputAction m_PirateControl_PirateMouseClick;
     /// <summary>
     /// Provides access to input actions defined in input action map "PirateControl".
     /// </summary>
@@ -630,9 +882,37 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// </summary>
         public PirateControlActions(@PirateController wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "PirateControl/Newaction".
+        /// Provides access to the underlying input action "PirateControl/PirateForward".
         /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_PirateControl_Newaction;
+        public InputAction @PirateForward => m_Wrapper.m_PirateControl_PirateForward;
+        /// <summary>
+        /// Provides access to the underlying input action "PirateControl/PirateStrafe".
+        /// </summary>
+        public InputAction @PirateStrafe => m_Wrapper.m_PirateControl_PirateStrafe;
+        /// <summary>
+        /// Provides access to the underlying input action "PirateControl/PirateCameraRotate".
+        /// </summary>
+        public InputAction @PirateCameraRotate => m_Wrapper.m_PirateControl_PirateCameraRotate;
+        /// <summary>
+        /// Provides access to the underlying input action "PirateControl/PirateMousePos".
+        /// </summary>
+        public InputAction @PirateMousePos => m_Wrapper.m_PirateControl_PirateMousePos;
+        /// <summary>
+        /// Provides access to the underlying input action "PirateControl/PirateSwap".
+        /// </summary>
+        public InputAction @PirateSwap => m_Wrapper.m_PirateControl_PirateSwap;
+        /// <summary>
+        /// Provides access to the underlying input action "PirateControl/PirateInteract".
+        /// </summary>
+        public InputAction @PirateInteract => m_Wrapper.m_PirateControl_PirateInteract;
+        /// <summary>
+        /// Provides access to the underlying input action "PirateControl/PirateSubmit".
+        /// </summary>
+        public InputAction @PirateSubmit => m_Wrapper.m_PirateControl_PirateSubmit;
+        /// <summary>
+        /// Provides access to the underlying input action "PirateControl/PirateMouseClick".
+        /// </summary>
+        public InputAction @PirateMouseClick => m_Wrapper.m_PirateControl_PirateMouseClick;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -659,9 +939,30 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PirateControlActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PirateControlActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @PirateForward.started += instance.OnPirateForward;
+            @PirateForward.performed += instance.OnPirateForward;
+            @PirateForward.canceled += instance.OnPirateForward;
+            @PirateStrafe.started += instance.OnPirateStrafe;
+            @PirateStrafe.performed += instance.OnPirateStrafe;
+            @PirateStrafe.canceled += instance.OnPirateStrafe;
+            @PirateCameraRotate.started += instance.OnPirateCameraRotate;
+            @PirateCameraRotate.performed += instance.OnPirateCameraRotate;
+            @PirateCameraRotate.canceled += instance.OnPirateCameraRotate;
+            @PirateMousePos.started += instance.OnPirateMousePos;
+            @PirateMousePos.performed += instance.OnPirateMousePos;
+            @PirateMousePos.canceled += instance.OnPirateMousePos;
+            @PirateSwap.started += instance.OnPirateSwap;
+            @PirateSwap.performed += instance.OnPirateSwap;
+            @PirateSwap.canceled += instance.OnPirateSwap;
+            @PirateInteract.started += instance.OnPirateInteract;
+            @PirateInteract.performed += instance.OnPirateInteract;
+            @PirateInteract.canceled += instance.OnPirateInteract;
+            @PirateSubmit.started += instance.OnPirateSubmit;
+            @PirateSubmit.performed += instance.OnPirateSubmit;
+            @PirateSubmit.canceled += instance.OnPirateSubmit;
+            @PirateMouseClick.started += instance.OnPirateMouseClick;
+            @PirateMouseClick.performed += instance.OnPirateMouseClick;
+            @PirateMouseClick.canceled += instance.OnPirateMouseClick;
         }
 
         /// <summary>
@@ -673,9 +974,30 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// <seealso cref="PirateControlActions" />
         private void UnregisterCallbacks(IPirateControlActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @PirateForward.started -= instance.OnPirateForward;
+            @PirateForward.performed -= instance.OnPirateForward;
+            @PirateForward.canceled -= instance.OnPirateForward;
+            @PirateStrafe.started -= instance.OnPirateStrafe;
+            @PirateStrafe.performed -= instance.OnPirateStrafe;
+            @PirateStrafe.canceled -= instance.OnPirateStrafe;
+            @PirateCameraRotate.started -= instance.OnPirateCameraRotate;
+            @PirateCameraRotate.performed -= instance.OnPirateCameraRotate;
+            @PirateCameraRotate.canceled -= instance.OnPirateCameraRotate;
+            @PirateMousePos.started -= instance.OnPirateMousePos;
+            @PirateMousePos.performed -= instance.OnPirateMousePos;
+            @PirateMousePos.canceled -= instance.OnPirateMousePos;
+            @PirateSwap.started -= instance.OnPirateSwap;
+            @PirateSwap.performed -= instance.OnPirateSwap;
+            @PirateSwap.canceled -= instance.OnPirateSwap;
+            @PirateInteract.started -= instance.OnPirateInteract;
+            @PirateInteract.performed -= instance.OnPirateInteract;
+            @PirateInteract.canceled -= instance.OnPirateInteract;
+            @PirateSubmit.started -= instance.OnPirateSubmit;
+            @PirateSubmit.performed -= instance.OnPirateSubmit;
+            @PirateSubmit.canceled -= instance.OnPirateSubmit;
+            @PirateMouseClick.started -= instance.OnPirateMouseClick;
+            @PirateMouseClick.performed -= instance.OnPirateMouseClick;
+            @PirateMouseClick.canceled -= instance.OnPirateMouseClick;
         }
 
         /// <summary>
@@ -713,7 +1035,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     // UIControl
     private readonly InputActionMap m_UIControl;
     private List<IUIControlActions> m_UIControlActionsCallbackInterfaces = new List<IUIControlActions>();
-    private readonly InputAction m_UIControl_Newaction;
+    private readonly InputAction m_UIControl_UITest;
     /// <summary>
     /// Provides access to input actions defined in input action map "UIControl".
     /// </summary>
@@ -726,9 +1048,9 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// </summary>
         public UIControlActions(@PirateController wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "UIControl/Newaction".
+        /// Provides access to the underlying input action "UIControl/UITest".
         /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_UIControl_Newaction;
+        public InputAction @UITest => m_Wrapper.m_UIControl_UITest;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -755,9 +1077,9 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIControlActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIControlActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @UITest.started += instance.OnUITest;
+            @UITest.performed += instance.OnUITest;
+            @UITest.canceled += instance.OnUITest;
         }
 
         /// <summary>
@@ -769,9 +1091,9 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// <seealso cref="UIControlActions" />
         private void UnregisterCallbacks(IUIControlActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @UITest.started -= instance.OnUITest;
+            @UITest.performed -= instance.OnUITest;
+            @UITest.canceled -= instance.OnUITest;
         }
 
         /// <summary>
@@ -853,19 +1175,26 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShipTurn(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "CameraTurn" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ShipCameraTurn" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnCameraTurn(InputAction.CallbackContext context);
+        void OnShipCameraTurn(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "MousePos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ShipMousePos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMousePos(InputAction.CallbackContext context);
+        void OnShipMousePos(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ShipSwap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShipSwap(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PirateControl" which allows adding and removing callbacks.
@@ -875,12 +1204,61 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     public interface IPirateControlActions
     {
         /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "PirateForward" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnPirateForward(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PirateStrafe" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPirateStrafe(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PirateCameraRotate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPirateCameraRotate(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PirateMousePos" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPirateMousePos(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PirateSwap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPirateSwap(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PirateInteract" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPirateInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PirateSubmit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPirateSubmit(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PirateMouseClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPirateMouseClick(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UIControl" which allows adding and removing callbacks.
@@ -890,11 +1268,11 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     public interface IUIControlActions
     {
         /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "UITest" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnUITest(InputAction.CallbackContext context);
     }
 }
