@@ -22,9 +22,6 @@ public class DialougeManager : MonoBehaviour
     Story currentStory;
     public bool bDialoguePlaying { get; private set; }
 
-    [SerializeField]
-    InputReader input;
-
 
     private void Start()
     {
@@ -36,18 +33,21 @@ public class DialougeManager : MonoBehaviour
 
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
-        foreach(GameObject choice in choices)
+        foreach (GameObject choice in choices)
         {
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             ++index;
         }
-
-        input.PirateSubmitEvent += HandleSubmit;
     }
 
-    private void OnDestroy()
+    private void OnEnable()
     {
-        input.PirateSubmitEvent -= HandleSubmit;
+        GameEventManager.instance.inputEvents.PirateSubmitEvent += HandleSubmit;
+    }
+    private void OnDisable()
+    {
+        GameEventManager.instance.inputEvents.PirateSubmitEvent -= HandleSubmit;
+
     }
 
     void Update()
@@ -88,21 +88,21 @@ public class DialougeManager : MonoBehaviour
 
     void DisplayChoices()
     {
-       List<Choice> currentChoices = currentStory.currentChoices;
+        List<Choice> currentChoices = currentStory.currentChoices;
 
-        if(currentChoices.Count > choices.Length)
+        if (currentChoices.Count > choices.Length)
         {
             Debug.LogError("There are too many choices available then what the UI can Handle!");
         }
 
         int index = 0;
-        foreach(Choice choice in currentChoices)
+        foreach (Choice choice in currentChoices)
         {
             choices[index].gameObject.SetActive(true);
             choicesText[index].text = choice.text;
             ++index;
         }
-        for(int i = index; i < choices.Length; ++i)
+        for (int i = index; i < choices.Length; ++i)
         {
             choices[i].SetActive(false);
         }

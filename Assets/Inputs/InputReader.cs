@@ -3,10 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-[CreateAssetMenu(menuName = "InputReader")]
+[CreateAssetMenu(menuName = "ScriptableObjects/InputReader", order = 2)]
 public class InputReader : ScriptableObject, PirateController.IShipControlActions, PirateController.IPirateControlActions, PirateController.IUIControlActions
 {
-
     private PirateController _pController;
 
     //Ship Events
@@ -22,6 +21,7 @@ public class InputReader : ScriptableObject, PirateController.IShipControlAction
     public event Action<float> PirateInteractEvent;
     public event Action<float> PirateSubmitEvent;
     public event Action<float> PirateMouseButton;
+    public event Action<float> PirateTestEvent;
     public event Action<Vector2> PirateMousePosEvent;
 
     public event Action<float> SwapEvent;
@@ -127,6 +127,12 @@ public class InputReader : ScriptableObject, PirateController.IShipControlAction
     {
         if (context.phase == InputActionPhase.Performed)
             PirateSubmitEvent?.Invoke(context.ReadValue<float>());
+    }
+
+    public void OnPirateTest(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            PirateTestEvent?.Invoke(context.ReadValue<float>());
     }
 
     public void OnPirateSwap(InputAction.CallbackContext context)

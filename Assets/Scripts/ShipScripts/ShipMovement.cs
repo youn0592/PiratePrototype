@@ -31,8 +31,6 @@ public class ShipMovement : MonoBehaviour
     Vector3 forwardVector;
     float turnVelocity;
 
-    [SerializeField]
-    InputReader input;
 
     private void Start()
     {
@@ -43,14 +41,22 @@ public class ShipMovement : MonoBehaviour
             Debug.LogError(this + " does not has a Rigidbody component");
         }
 
-        input.ShipAccelerateEvent += HandleAccelerateInput;
-        input.ShipTurnEvent += HandleTurnInput;
     }
-
+    private void OnEnable()
+    {
+        GameEventManager.instance.inputEvents.ShipAccelerateEvent += HandleAccelerateInput;
+        GameEventManager.instance.inputEvents.ShipTurnEvent += HandleTurnInput;
+        
+    }
+    private void OnDisable()
+    {
+        GameEventManager.instance.inputEvents.ShipAccelerateEvent -= HandleAccelerateInput;
+        GameEventManager.instance.inputEvents.ShipTurnEvent -= HandleTurnInput;
+    }
     private void OnDestroy()
     {
-        input.ShipAccelerateEvent -= HandleAccelerateInput;
-        input.ShipTurnEvent -= HandleTurnInput;
+        GameEventManager.instance.inputEvents.ShipAccelerateEvent -= HandleAccelerateInput;
+        GameEventManager.instance.inputEvents.ShipTurnEvent -= HandleTurnInput;
     }
 
     private void FixedUpdate()

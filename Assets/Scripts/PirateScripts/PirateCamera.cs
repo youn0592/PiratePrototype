@@ -26,9 +26,6 @@ public class PirateCamera : MonoBehaviour
 
     Vector3 velocity = Vector3.zero;
 
-    [SerializeField]
-    InputReader input;
-
     void Start()
     {
         if (instance == null)
@@ -39,14 +36,18 @@ public class PirateCamera : MonoBehaviour
 
         currentY = transform.position.y;
 
-        input.PirateCameraTurnEvent += HandlePirateCameraTurnInput;
-        input.PirateMousePosEvent += HandlePirateMouseInput;
     }
-
-    private void OnDestroy()
+    private void OnEnable()
     {
-        input.PirateCameraTurnEvent -= HandlePirateCameraTurnInput;
-        input.PirateMousePosEvent -= HandlePirateMouseInput;
+        GameEventManager.instance.inputEvents.PirateCameraTurnEvent += HandlePirateCameraTurnInput;
+        GameEventManager.instance.inputEvents.PirateMousePosEvent += HandlePirateMouseInput;
+        
+    }
+    private void OnDisable()
+    {
+        GameEventManager.instance.inputEvents.PirateCameraTurnEvent -= HandlePirateCameraTurnInput;
+        GameEventManager.instance.inputEvents.PirateMousePosEvent -= HandlePirateMouseInput;
+        
     }
 
     void FixedUpdate()

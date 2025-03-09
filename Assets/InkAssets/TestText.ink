@@ -1,20 +1,29 @@
--> main
+VAR questCompleted = false
 
-===main===
-Hello Friend
-I was wondering if you would help me
-I've seemed to have lost my doggie, do you know where he went?
-    +[Uhhh Meow?]
-        Uhhh actually hes a dog, are you okay?
-        ->END
-    
-    +[Friend???]
-        YOU GOT A FRIEND IN ME! YOU GOT A FRIEND IN ME
-        ->END
-    
-    +[Uhh yea he's right over there]
-        Oh thank you thank you thank you, ARRRGH
-        ->END
+-> questionNPC
 
+===questionNPC===
+Will you help me? I seemed to have lost my dog
+    +[Uhh Meow?]
+        Are you ok my friend?
+        ->DONE
+    
+    +[BARK BARK BARK]
+        WHAT THE HELL IS WRONG WITH YOU?
+        ->DONE
+    
+    +[Yea he's right over there!]
+        Thank you my friend!
+        ->DONE
+->END
+
+===giverNPC===
+{questCompleted:
+Hell yea dude, you did it, I have another quest to give you!
+->DONE
+-else:
+Come back once you've helped my friend
+->DONE
+}
 
     

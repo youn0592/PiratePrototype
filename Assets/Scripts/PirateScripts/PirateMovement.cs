@@ -21,9 +21,6 @@ public class PirateMovement : MonoBehaviour
     Vector3 velocity;
 
 
-    [SerializeField]
-    InputReader input;
-
     void Start()
     {
         rigBod = GetComponent<Rigidbody>();
@@ -38,10 +35,18 @@ public class PirateMovement : MonoBehaviour
 
         rigBod.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
-        input.SetPirateController();
-
-        input.PirateForwardEvent += HandleForwardInput;
-        input.PirateStrafeEvent += HandleStrafeInput;
+    }
+    private void OnEnable()
+    {
+        GameEventManager.instance.inputEvents.SetPirateController();
+        GameEventManager.instance.inputEvents.PirateForwardEvent += HandleForwardInput;
+        GameEventManager.instance.inputEvents.PirateStrafeEvent += HandleStrafeInput;
+        
+    }
+    private void OnDisable()
+    {
+        GameEventManager.instance.inputEvents.PirateForwardEvent -= HandleForwardInput;
+        GameEventManager.instance.inputEvents.PirateStrafeEvent -= HandleStrafeInput;
     }
 
     void FixedUpdate()

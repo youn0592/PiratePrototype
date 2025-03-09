@@ -316,6 +316,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PirateTest",
+                    "type": "Button",
+                    "id": "449ef7a9-aed9-46ac-af60-59734b8826d5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -470,6 +479,17 @@
                     "processors": "",
                     "groups": ";K+M",
                     "action": "PirateMouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dabbfeac-9197-4340-9f8d-893c58a9ec97",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";K+M",
+                    "action": "PirateTest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

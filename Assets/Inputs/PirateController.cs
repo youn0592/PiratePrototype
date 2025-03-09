@@ -402,6 +402,15 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PirateTest"",
+                    ""type"": ""Button"",
+                    ""id"": ""449ef7a9-aed9-46ac-af60-59734b8826d5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -558,6 +567,17 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""action"": ""PirateMouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dabbfeac-9197-4340-9f8d-893c58a9ec97"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""PirateTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -637,6 +657,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         m_PirateControl_PirateInteract = m_PirateControl.FindAction("PirateInteract", throwIfNotFound: true);
         m_PirateControl_PirateSubmit = m_PirateControl.FindAction("PirateSubmit", throwIfNotFound: true);
         m_PirateControl_PirateMouseClick = m_PirateControl.FindAction("PirateMouseClick", throwIfNotFound: true);
+        m_PirateControl_PirateTest = m_PirateControl.FindAction("PirateTest", throwIfNotFound: true);
         // UIControl
         m_UIControl = asset.FindActionMap("UIControl", throwIfNotFound: true);
         m_UIControl_UITest = m_UIControl.FindAction("UITest", throwIfNotFound: true);
@@ -870,6 +891,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     private readonly InputAction m_PirateControl_PirateInteract;
     private readonly InputAction m_PirateControl_PirateSubmit;
     private readonly InputAction m_PirateControl_PirateMouseClick;
+    private readonly InputAction m_PirateControl_PirateTest;
     /// <summary>
     /// Provides access to input actions defined in input action map "PirateControl".
     /// </summary>
@@ -913,6 +935,10 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PirateControl/PirateMouseClick".
         /// </summary>
         public InputAction @PirateMouseClick => m_Wrapper.m_PirateControl_PirateMouseClick;
+        /// <summary>
+        /// Provides access to the underlying input action "PirateControl/PirateTest".
+        /// </summary>
+        public InputAction @PirateTest => m_Wrapper.m_PirateControl_PirateTest;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -963,6 +989,9 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             @PirateMouseClick.started += instance.OnPirateMouseClick;
             @PirateMouseClick.performed += instance.OnPirateMouseClick;
             @PirateMouseClick.canceled += instance.OnPirateMouseClick;
+            @PirateTest.started += instance.OnPirateTest;
+            @PirateTest.performed += instance.OnPirateTest;
+            @PirateTest.canceled += instance.OnPirateTest;
         }
 
         /// <summary>
@@ -998,6 +1027,9 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             @PirateMouseClick.started -= instance.OnPirateMouseClick;
             @PirateMouseClick.performed -= instance.OnPirateMouseClick;
             @PirateMouseClick.canceled -= instance.OnPirateMouseClick;
+            @PirateTest.started -= instance.OnPirateTest;
+            @PirateTest.performed -= instance.OnPirateTest;
+            @PirateTest.canceled -= instance.OnPirateTest;
         }
 
         /// <summary>
@@ -1259,6 +1291,13 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPirateMouseClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PirateTest" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPirateTest(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UIControl" which allows adding and removing callbacks.

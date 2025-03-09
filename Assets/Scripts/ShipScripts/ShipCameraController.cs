@@ -29,9 +29,6 @@ public class ShipCameraController : MonoBehaviour
     float cameraRate;
     float cameraTimer = 0f;
 
-    [SerializeField]
-    InputReader input;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,14 +41,17 @@ public class ShipCameraController : MonoBehaviour
 
         currentY = transform.position.y;
 
-        input.ShipCameraTurnEvent += HandleShipCameraTurnInput;
-        input.ShipMousePosEvent += HandleShipMousePosInput;
+    }
+    private void OnEnable()
+    {
+        GameEventManager.instance.inputEvents.ShipCameraTurnEvent += HandleShipCameraTurnInput;
+        GameEventManager.instance.inputEvents.ShipMousePosEvent += HandleShipMousePosInput;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        input.ShipCameraTurnEvent -= HandleShipCameraTurnInput;
-        input.PirateMousePosEvent -= HandleShipMousePosInput;
+        GameEventManager.instance.inputEvents.ShipCameraTurnEvent -= HandleShipCameraTurnInput;
+        GameEventManager.instance.inputEvents.PirateMousePosEvent -= HandleShipMousePosInput;
     }
 
     // Update is called once per frame
@@ -59,12 +59,12 @@ public class ShipCameraController : MonoBehaviour
     {
         FollowShip();
 
-        if(Mathf.Abs(cameraRate) > 0.1f)
+        if (Mathf.Abs(cameraRate) > 0.1f)
         {
             cameraTimer = 0f;
             RotateCamera();
         }
-        else if(Mouse.current.delta.ReadValue() != Vector2.zero)
+        else if (Mouse.current.delta.ReadValue() != Vector2.zero)
         {
             cameraTimer = 0f;
             RotateCameraWithMouse();
@@ -74,11 +74,11 @@ public class ShipCameraController : MonoBehaviour
             cameraTimer += Time.deltaTime;
         }
 
-        if(cameraTimer > cameraReset)
+        if (cameraTimer > cameraReset)
         {
             ResetCamera();
         }
-        
+
     }
 
     void FollowShip()
@@ -90,7 +90,7 @@ public class ShipCameraController : MonoBehaviour
 
     void RotateCamera()
     {
-        if(Mathf.Abs(cameraRate) > 0.1f)
+        if (Mathf.Abs(cameraRate) > 0.1f)
         {
             float rotationStep = cameraRate * rotationAmount * Time.deltaTime;
             transform.RotateAround(shipTransform.position, Vector3.up, rotationStep);
@@ -111,7 +111,7 @@ public class ShipCameraController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         Quaternion targetRotation = Quaternion.LookRotation(shipTransform.forward, Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, movementSpeed * Time.deltaTime);
-    }    
+    }
 
     void HandleShipMousePosInput(Vector2 val)
     {
