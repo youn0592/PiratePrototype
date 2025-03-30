@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360ebe341c293cc47bea000d413a5505, type: 3}
+  m_Name: YV_Rum
+  m_EditorClassIdentifier: 
+  _pitchMinMax:
+    x: 1.0647962
+    y: 1.2647961
+  _audioClips:
+  - {fileID: 8300000, guid: 372e344612c3893499163235b52189fb, type: 3}
+  - {fileID: 8300000, guid: a56fcc4f915a46a4a89a6e4dc9905f97, type: 3}
+  - {fileID: 8300000, guid: 3a89eef067f61a045bd8b33ea65fe092, type: 3}

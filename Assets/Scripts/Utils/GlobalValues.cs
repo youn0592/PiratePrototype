@@ -3,7 +3,7 @@ using UnityEngine;
 public class GlobalValues : MonoBehaviour
 {
 
-    GlobalValues instance;
+    public static GlobalValues instance { get; private set; }
 
     public enum currentPlayer
     {
@@ -19,9 +19,4 @@ public class GlobalValues : MonoBehaviour
             instance = this;
     }
 
-
-    void Update()
-    {
-        
-    }
 }

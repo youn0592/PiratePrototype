@@ -2,23 +2,18 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class QuestPoint : MonoBehaviour
 {
-    [SerializeField]
-    GameObject popup;
+
+    [Header("Dialogue")]
+    [SerializeField] string dialogueKnotName;
+
 
     [Header("Quest")]
-    [SerializeField]
-    QuestInfoSO questInfo;
+    [SerializeField] QuestInfoSO questInfo;
 
     [Header("Config")]
-    [SerializeField]
-    bool bStartPoint = true;
-    [SerializeField]
-    bool bFinishPoint = true;
+    [SerializeField] bool bStartPoint = true;
+    [SerializeField] bool bFinishPoint = true;
 
-    [SerializeField]
-    InputReader input;
-
-    private bool bPlayerIsNear = false;
     private string questId;
     private QuestState currentQuestState;
 
@@ -29,9 +24,7 @@ public class QuestPoint : MonoBehaviour
 
     private void OnEnable()
     {
-        popup.SetActive(false);
         GameEventManager.instance.questEvents.onQuestStateChange += QuestStateChange;
-        input.PirateInteractEvent += InteractPressed;
     }
 
     private void OnDisable()
@@ -39,18 +32,25 @@ public class QuestPoint : MonoBehaviour
         GameEventManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
     }
 
-    void InteractPressed(float val)
+    public void InteractEngaged()
     {
-        if (!bPlayerIsNear) return;
 
-        if(currentQuestState.Equals(QuestState.CAN_START) && bStartPoint)
+        if(!dialogueKnotName.Equals(""))
         {
-            GameEventManager.instance.questEvents.StartQuest(questId);
+            GameEventManager.instance.dialougeEvents.EnterDialogue(dialogueKnotName);
         }
-        else if(currentQuestState.Equals(QuestState.CAN_FINISH) && bFinishPoint)
+        else
         {
-            GameEventManager.instance.questEvents.FinishQuest(questId);
+            if (currentQuestState.Equals(QuestState.CAN_START) && bStartPoint)
+            {
+                GameEventManager.instance.questEvents.StartQuest(questId);
+            }
+            else if (currentQuestState.Equals(QuestState.CAN_FINISH) && bFinishPoint)
+            {
+                GameEventManager.instance.questEvents.FinishQuest(questId);
+            }
         }
+
     }
     void QuestStateChange(Quest quest)
     {
@@ -60,20 +60,4 @@ public class QuestPoint : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            popup.SetActive(true);
-            bPlayerIsNear = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            popup.SetActive(false);
-            bPlayerIsNear = false;
-        }
-    }
 }

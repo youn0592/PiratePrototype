@@ -21,10 +21,9 @@ public class PirateCamera : MonoBehaviour
 
     Vector2 mouseDelta;
 
-    float currentY;
+    [SerializeField] float yOffset;
     float cameraRate;
 
-    Vector3 velocity = Vector3.zero;
 
     void Start()
     {
@@ -34,7 +33,6 @@ public class PirateCamera : MonoBehaviour
         if (pirateTransform == null)
             Debug.LogError("Pirate is Null");
 
-        currentY = transform.position.y;
 
     }
     private void OnEnable()
@@ -52,7 +50,6 @@ public class PirateCamera : MonoBehaviour
 
     void FixedUpdate()
     {
-
         RotateCamera();
         RotateCameraWithMouse();
         FollowPirate();
@@ -60,8 +57,8 @@ public class PirateCamera : MonoBehaviour
 
     void FollowPirate()
     {
-        Vector3 newLoc = Vector3.Lerp(transform.position, pirateTransform.position, movementSpeed * Time.deltaTime);
-        newLoc.y = currentY;
+        Vector3 targetPosition = pirateTransform.position + new Vector3(0, yOffset, 0);
+        Vector3 newLoc = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         transform.position = newLoc;
     }
 

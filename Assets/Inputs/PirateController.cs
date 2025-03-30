@@ -586,6 +586,15 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
             ""id"": ""5a09c489-53f2-4717-8c18-e4d2b7368b4d"",
             ""actions"": [
                 {
+                    ""name"": ""UISubmit"",
+                    ""type"": ""Button"",
+                    ""id"": ""635d56bb-799d-44e9-8cc5-41e13e971975"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""UITest"",
                     ""type"": ""Button"",
                     ""id"": ""1addd8f9-e3cd-4318-bb0a-41718839943f"",
@@ -604,6 +613,17 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""UITest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28ce950e-c17b-4a50-8177-2443c073dba8"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";K+M"",
+                    ""action"": ""UISubmit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -660,6 +680,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         m_PirateControl_PirateTest = m_PirateControl.FindAction("PirateTest", throwIfNotFound: true);
         // UIControl
         m_UIControl = asset.FindActionMap("UIControl", throwIfNotFound: true);
+        m_UIControl_UISubmit = m_UIControl.FindAction("UISubmit", throwIfNotFound: true);
         m_UIControl_UITest = m_UIControl.FindAction("UITest", throwIfNotFound: true);
     }
 
@@ -1067,6 +1088,7 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     // UIControl
     private readonly InputActionMap m_UIControl;
     private List<IUIControlActions> m_UIControlActionsCallbackInterfaces = new List<IUIControlActions>();
+    private readonly InputAction m_UIControl_UISubmit;
     private readonly InputAction m_UIControl_UITest;
     /// <summary>
     /// Provides access to input actions defined in input action map "UIControl".
@@ -1079,6 +1101,10 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
         public UIControlActions(@PirateController wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "UIControl/UISubmit".
+        /// </summary>
+        public InputAction @UISubmit => m_Wrapper.m_UIControl_UISubmit;
         /// <summary>
         /// Provides access to the underlying input action "UIControl/UITest".
         /// </summary>
@@ -1109,6 +1135,9 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIControlActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIControlActionsCallbackInterfaces.Add(instance);
+            @UISubmit.started += instance.OnUISubmit;
+            @UISubmit.performed += instance.OnUISubmit;
+            @UISubmit.canceled += instance.OnUISubmit;
             @UITest.started += instance.OnUITest;
             @UITest.performed += instance.OnUITest;
             @UITest.canceled += instance.OnUITest;
@@ -1123,6 +1152,9 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
         /// <seealso cref="UIControlActions" />
         private void UnregisterCallbacks(IUIControlActions instance)
         {
+            @UISubmit.started -= instance.OnUISubmit;
+            @UISubmit.performed -= instance.OnUISubmit;
+            @UISubmit.canceled -= instance.OnUISubmit;
             @UITest.started -= instance.OnUITest;
             @UITest.performed -= instance.OnUITest;
             @UITest.canceled -= instance.OnUITest;
@@ -1306,6 +1338,13 @@ public partial class @PirateController: IInputActionCollection2, IDisposable
     /// <seealso cref="UIControlActions.RemoveCallbacks(IUIControlActions)" />
     public interface IUIControlActions
     {
+        /// <summary>
+        /// Method invoked when associated input action "UISubmit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUISubmit(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "UITest" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

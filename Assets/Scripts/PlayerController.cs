@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,55 +13,98 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance { get; private set; }
 
-    [SerializeField]
-    GameObject pirateObj;
-    [SerializeField]
-    GameObject shipObj;
+    public event Action PirateControllerEvent;
+    public event Action ShipControllerEvent;
+    public event Action UIControllerEvent;
 
-    ECurrentController E_Controller = ECurrentController.Ship;
-
-    [SerializeField]
-    InputReader input;
+    InputReader controllerInputs;
+    ECurrentController E_Controller = ECurrentController.Pirate;
 
     void Start()
     {
-        if (instance == null)
-            instance = this;
+        if (instance != null)
+            Debug.LogError("Multiple instances of PlayerController exist");
 
-        if(pirateObj == null || shipObj == null)
-        {
-            Debug.LogError("Pirate Obj or Ship Obj is null in " + this);
-        }
-
-        pirateObj.SetActive(false);
-        shipObj.SetActive(true);
-        
-        input.SetShipController();
-        input.SwapEvent += HandleSwapInput;
-
+        instance = this;
+        controllerInputs.SetPirateController();
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-    void OnDestroy()
+    private void OnEnable()
     {
-        input.SwapEvent -= HandleSwapInput;
+        controllerInputs = GameEventManager.instance.inputEvents;
+        GameEventManager.instance.dialougeEvents.onDialogueStarted += SetUIController;
+        GameEventManager.instance.dialougeEvents.onDialogueFinished += SetPirateController;
+        controllerInputs.SwapEvent += SetPirateController;
+    }
+
+    void OnDisable()
+    {
+        GameEventManager.instance.dialougeEvents.onDialogueStarted -= SetUIController;
+        GameEventManager.instance.dialougeEvents.onDialogueFinished -= SetPirateController;
+        controllerInputs.SwapEvent -= HandleSwapInput;
+    }
+
+    public void SetUIController()
+    {
+        if (E_Controller == ECurrentController.UI)
+        {
+            Debug.LogWarning("SetUIController was called even though Pirate Controller is active");
+            return;
+        }
+
+        controllerInputs.SetUIController();
+        E_Controller = ECurrentController.UI;
+        UIControllerEvent?.Invoke();
+    }
+
+    public void SetPirateController()
+    {
+        if (E_Controller == ECurrentController.Pirate)
+        {
+            Debug.LogWarning("SetPirateController was called even though Pirate Controller is active");
+            return;
+        }
+        controllerInputs.SetPirateController();
+        E_Controller = ECurrentController.Pirate;
+    }
+
+    public void SetPirateController(float val)
+    {
+        if(E_Controller == ECurrentController.Pirate)
+        {
+            Debug.LogWarning("SetPirateController was called even though Pirate Controller is active");
+            return;
+        }
+        controllerInputs.SetPirateController();
+        E_Controller = ECurrentController.Pirate;
+        PirateControllerEvent?.Invoke();
+    }
+
+    public void SetShipController()
+    {
+        if (E_Controller == ECurrentController.Ship)
+        {
+            Debug.LogWarning("SetShipController was called even though Pirate Controller is active");
+            return;
+        }
+        controllerInputs.SetShipController();
+        E_Controller = ECurrentController.Ship;
+        ShipControllerEvent?.Invoke();
     }
 
     void HandleSwapInput(float val)
     {
-        switch(E_Controller)
+        switch (E_Controller)
         {
             case ECurrentController.Pirate:
-                pirateObj.SetActive(false);
-                shipObj.SetActive(true);
-                input.SetShipController();
+                controllerInputs.SetShipController();
                 E_Controller = ECurrentController.Ship;
+                ShipControllerEvent?.Invoke();
                 break;
             case ECurrentController.Ship:
-                shipObj.SetActive(false);
-                pirateObj.SetActive(true);
-                input.SetPirateController();
+                controllerInputs.SetPirateController();
                 E_Controller = ECurrentController.Pirate;
+                PirateControllerEvent?.Invoke();
                 break;
         }
     }

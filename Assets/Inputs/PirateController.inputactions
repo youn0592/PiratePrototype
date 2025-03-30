@@ -500,6 +500,15 @@
             "id": "5a09c489-53f2-4717-8c18-e4d2b7368b4d",
             "actions": [
                 {
+                    "name": "UISubmit",
+                    "type": "Button",
+                    "id": "635d56bb-799d-44e9-8cc5-41e13e971975",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "UITest",
                     "type": "Button",
                     "id": "1addd8f9-e3cd-4318-bb0a-41718839943f",
@@ -518,6 +527,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "UITest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28ce950e-c17b-4a50-8177-2443c073dba8",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";K+M",
+                    "action": "UISubmit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

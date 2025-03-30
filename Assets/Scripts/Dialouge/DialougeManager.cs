@@ -7,126 +7,138 @@ using UnityEngine.EventSystems;
 
 public class DialougeManager : MonoBehaviour
 {
-    public static DialougeManager instance { get; private set; }
-    [Header("Dialogue UI")]
-    [SerializeField]
-    GameObject dialoguePanel;
-    [SerializeField]
-    TextMeshProUGUI dialogueText;
+    [Header("Ink Story")]
+    [SerializeField] private TextAsset inkJson;
 
-    [Header("ChoicesUI")]
-    [SerializeField]
-    private GameObject[] choices;
-    private TextMeshProUGUI[] choicesText;
+    private Story story;
+    int currentChoiceIndex = -1;
 
-    Story currentStory;
-    public bool bDialoguePlaying { get; private set; }
+    private bool bDialoguePlaying = false;
 
+    private InkExternalFunctions inkExternals;
+    private InkDialogueVars inkDialogueVars;
 
-    private void Start()
+    private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        story = new Story(inkJson.text);
+        inkExternals = new InkExternalFunctions();
+        inkExternals.Bind(story);
+        inkDialogueVars = new InkDialogueVars(story);
+    }
 
-        dialoguePanel.SetActive(false);
-        bDialoguePlaying = false;
-
-        choicesText = new TextMeshProUGUI[choices.Length];
-        int index = 0;
-        foreach (GameObject choice in choices)
-        {
-            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
-            ++index;
-        }
+    private void OnDestroy()
+    {
+        inkExternals.Unbind(story);
     }
 
     private void OnEnable()
     {
-        GameEventManager.instance.inputEvents.PirateSubmitEvent += HandleSubmit;
+        GameEventManager.instance.dialougeEvents.onEnterDialogue += EnterDialogue;
+        GameEventManager.instance.dialougeEvents.onUpdateChoiceIndex += UpdateChoiceIndex;
+        GameEventManager.instance.dialougeEvents.onUpdateInkDialogueVars += UpdateInkDialogueVariable;
+        //GameEventManager.instance.inputEvents.PirateSubmitEvent += SubmitPressed;
+        GameEventManager.instance.inputEvents.UISubmitEvent += SubmitPressed;
+        GameEventManager.instance.questEvents.onQuestStateChange += QuestStateChange;
     }
     private void OnDisable()
     {
-        GameEventManager.instance.inputEvents.PirateSubmitEvent -= HandleSubmit;
-
+        GameEventManager.instance.dialougeEvents.onEnterDialogue -= EnterDialogue;
+        GameEventManager.instance.dialougeEvents.onUpdateChoiceIndex -= UpdateChoiceIndex;
+        GameEventManager.instance.dialougeEvents.onUpdateInkDialogueVars -= UpdateInkDialogueVariable;
+        //GameEventManager.instance.inputEvents.PirateSubmitEvent -= SubmitPressed;
+        GameEventManager.instance.inputEvents.UISubmitEvent -= SubmitPressed;
+        GameEventManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
     }
 
-    void Update()
+    void QuestStateChange(Quest quest)
     {
-        if (!bDialoguePlaying)
+        GameEventManager.instance.dialougeEvents.UpdateInkDialogueVariable(quest.info.id + "State", new StringValue(quest.state.ToString()));
+    }
+
+    void UpdateInkDialogueVariable(string name, Ink.Runtime.Object value)
+    {
+        inkDialogueVars.UpdateVariableState(name, value);
+    }
+    void UpdateChoiceIndex(int index)
+    {
+        currentChoiceIndex = index;
+    }
+
+    void SubmitPressed(float val)
+    {
+        if (!bDialoguePlaying) return; //TODO: Hook up to UI Input
+        if(DialoguePanelUI.instance.IsPlayingDialogue())
+        {
+            GameEventManager.instance.dialougeEvents.DialogueSkipped();
             return;
+        }
 
-
-    }
-
-    public void TriggerDialogue(TextAsset inkJSON)
-    {
-        currentStory = new Story(inkJSON.text);
-        bDialoguePlaying = true;
-        dialoguePanel.SetActive(true);
         ContinueStory();
     }
 
-    public void ExitDialogue()
+    void EnterDialogue(string knotName)
     {
-        bDialoguePlaying = false;
-        dialoguePanel.SetActive(false);
-        dialogueText.text = "";
+        if (bDialoguePlaying) return;
+
+        bDialoguePlaying = true;
+
+        GameEventManager.instance.dialougeEvents.DialogueStarted();
+
+        if (!knotName.Equals(""))
+        {
+            story.ChoosePathString(knotName);
+        }
+        else
+        {
+            Debug.LogWarning("Knot name was empty when entering dialogue");
+        }
+
+        inkDialogueVars.SyncVariableAndStartListening(story);
+
+        ContinueStory();
     }
 
     void ContinueStory()
     {
-        if (currentStory.canContinue)
+        if (story.currentChoices.Count > 0 && currentChoiceIndex != -1)
         {
-            dialogueText.text = currentStory.Continue();
-            DisplayChoices();
-        }
-        else
-        {
-            ExitDialogue();
-        }
-    }
-
-    void DisplayChoices()
-    {
-        List<Choice> currentChoices = currentStory.currentChoices;
-
-        if (currentChoices.Count > choices.Length)
-        {
-            Debug.LogError("There are too many choices available then what the UI can Handle!");
+            story.ChooseChoiceIndex(currentChoiceIndex);
+            currentChoiceIndex = -1;
         }
 
-        int index = 0;
-        foreach (Choice choice in currentChoices)
+        if (story.canContinue)
         {
-            choices[index].gameObject.SetActive(true);
-            choicesText[index].text = choice.text;
-            ++index;
+            string dialogueLine = story.Continue();
+            while (IsLineBlank(dialogueLine) && story.canContinue)
+            {
+                dialogueLine = story.Continue();
+            }
+            if (IsLineBlank(dialogueLine) && !story.canContinue)
+            {
+                ExitDialogue();
+            }
+            else
+            {
+                GameEventManager.instance.dialougeEvents.DisplayDialogue(dialogueLine, story.currentChoices, story.currentTags);
+            }
         }
-        for (int i = index; i < choices.Length; ++i)
+        else if (story.currentChoices.Count == 0)
         {
-            choices[i].SetActive(false);
-        }
-
-        //StartCoroutine(SelectFirstChoice());
-    }
-    void HandleSubmit(float val)
-    {
-        if (bDialoguePlaying)
-        {
-            ContinueStory();
+            StartCoroutine(ExitDialogue());
         }
     }
 
-    //private IEnumerator SelectFirstChoice()
-    //{
-    //    EventSystem.current.SetSelectedGameObject(null);
-    //    yield return new WaitForEndOfFrame();
-    //    EventSystem.current.SetSelectedGameObject(choices[0]);
-    //}
-
-    public void MakeChoice(int choiceIndex)
+    IEnumerator ExitDialogue()
     {
-        currentStory.ChooseChoiceIndex(choiceIndex);
-        ContinueStory();
+        yield return null;
+        GameEventManager.instance.dialougeEvents.DialougeFinished();
+        bDialoguePlaying = false;
+        inkDialogueVars.StopListening(story);
+        story.ResetState();
+    }
+
+    bool IsLineBlank(string dialogueLine)
+    {
+        return dialogueLine.Trim().Equals("") || dialogueLine.Trim().Equals("\n");
     }
 }

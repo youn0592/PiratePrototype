@@ -24,6 +24,9 @@ public class InputReader : ScriptableObject, PirateController.IShipControlAction
     public event Action<float> PirateTestEvent;
     public event Action<Vector2> PirateMousePosEvent;
 
+    //UI Events
+    public event Action<float> UISubmitEvent;
+
     public event Action<float> SwapEvent;
 
 
@@ -137,12 +140,18 @@ public class InputReader : ScriptableObject, PirateController.IShipControlAction
 
     public void OnPirateSwap(InputAction.CallbackContext context)
     {
-        SwapEvent?.Invoke(context.ReadValue<float>());
+        //SwapEvent?.Invoke(context.ReadValue<float>());
     }
 
     public void OnUITest(InputAction.CallbackContext context)
     {
         throw new NotImplementedException();
+    }
+
+    public void OnUISubmit(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            UISubmitEvent?.Invoke(context.ReadValue<float>());
     }
 
 }

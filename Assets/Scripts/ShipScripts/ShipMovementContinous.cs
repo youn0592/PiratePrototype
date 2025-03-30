@@ -92,6 +92,7 @@ public class ShipMovementContinous : MonoBehaviour
             sailAmount = Mathf.Clamp(sailAmount, 0, 1);
         }
 
+        if (sailText == null) return;
         sailText.SetText(sailAmount.ToString());
     }
 

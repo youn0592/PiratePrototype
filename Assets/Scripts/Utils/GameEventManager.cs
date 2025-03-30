@@ -6,6 +6,7 @@ public class GameEventManager : MonoBehaviour
 
     public InputReader inputEvents;
     public QuestEvents questEvents;
+    public DialougeEvents dialougeEvents;
 
     private void Awake()
     {
@@ -15,5 +16,6 @@ public class GameEventManager : MonoBehaviour
         }
         instance = this;
         questEvents = new QuestEvents();
+        dialougeEvents = new DialougeEvents();
     }
 }
